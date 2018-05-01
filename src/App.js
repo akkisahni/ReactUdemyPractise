@@ -8,9 +8,9 @@ class App extends Component {
     super(props);
     this.state={
       persons :[
-      {name:'Akhil', age:26 , id:'1'},
-      {name:'Amit', age:26 , id:'2'},
-      {name:'Ankur', age:26 , id:'3'}
+      {name:'Akhil', age:26 , id:1},
+      {name:'Amit', age:26 , id:2},
+      {name:'Ankur', age:26 , id:3}
       ],
       showPersons:false
     };
@@ -18,6 +18,16 @@ class App extends Component {
 
   showPersons = () =>{
     this.setState({showPersons:true});
+  }
+
+  inputChangeHandler = (event, id)=>{
+      const personArray = [...this.state.persons];
+      personArray.find((person)=>{
+          if(person.id === id)
+              person.age = event.target.value;
+          return person;
+          } );
+      this.setState({persons:personArray});
   }
 
   render() {
@@ -28,10 +38,18 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
           <button onClick={this.showPersons}>Toggle person</button>
-          {this.state.showPersons && persons.map((person) =>{return <Person name={person.name} age={person.age} id={person.id}/>})}
-        </p>
+          {this.state.showPersons &&
+          persons.map((person) => {
+              return <Person
+                  key={person.id}
+                  name={person.name}
+                  inputChangeHandler={this.inputChangeHandler}
+                  age={person.age}
+                  id={person.id}/>})
+          }
+        </div>
       </div>
     );
   }
