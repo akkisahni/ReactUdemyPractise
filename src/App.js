@@ -9,8 +9,8 @@ class App extends Component {
     this.state={
       persons :[
       {name:'Akhil', age:26 , id:'1'},
-      {name:'Neetika', age:26 , id:'2'},
-      {name:'Monty', age:26 , id:'3'}
+      {name:'Amit', age:26 , id:'2'},
+      {name:'Ankur', age:26 , id:'3'}
       ],
       showPersons:false
     };
