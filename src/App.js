@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   render() {
+    const {persons} = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -29,7 +30,7 @@ class App extends Component {
         </header>
         <p className="App-intro">
           <button onClick={this.showPersons}>Toggle person</button>
-          {this.state.showPersons && <Person/>}
+          {this.state.showPersons && persons.map((person) =>{return <Person name={person.name} age={person.age} id={person.id}/>})}
         </p>
       </div>
     );
